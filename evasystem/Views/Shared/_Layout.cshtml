@@ -1,0 +1,167 @@
+﻿
+@using System.Web.Configuration;
+
+@{
+    string WebURL = WebConfigurationManager.AppSettings["WebUrl"];
+}
+
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+
+    <!--jquery-->
+    <script src="~/Scripts/plugins/jquery/jquery-3.1.1.min.js"></script>
+    <!--jquery-ui-->
+    <script src="~/Scripts/plugins/jquery-ui/jquery-ui-1.12.1.js"></script>
+    <!--angular-->
+    <script src="~/Scripts/plugins/angular/angular-1.4.2.js"></script>
+    <!--modernizr-->
+    <script src="~/Scripts/plugins/modernizr/modernizr-2.6.2.js"></script>
+    <!--font-awesome-->
+    <link href="~/Content/Plugins/font-awesome/font-awesome.min.css" rel="stylesheet" />
+    <!--bootstrap js-->
+    <script src="~/Scripts/plugins/bootstrap/bootstrap.min.js"></script>
+    <link href="~/Content/Plugins/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/Plugins/bootstrap-theme/bootstrap-theme.min.css" rel="stylesheet" />
+    @*<script src="~/Scripts/plugins/ui-bootstrap-tpls/ui-bootstrap-tpls-0.4.0.min.js"></script>*@
+    <script src="~/Scripts/plugins/ui-bootstrap-tpls/ui-bootstrap-tpls-0.14.3.min.js"></script>
+    @RenderSection("CSS", required: false)
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <!--jquery-ui-->
+    <link href="~/Content/Plugins/jquery-ui/jquery-ui-1.12.1.css" rel="stylesheet" />
+    <!--angular-sortable-->
+    <script src="~/Scripts/plugins/angular-sortable/angular-sortable.js"></script>
+    <!--Paging-->
+    <script src="~/Scripts/plugins/angularUtils-dirPagination/dirPagination.js"></script>
+    <!--pnotify-->
+    <link href="~/Content/Plugins/jquery-pnotify/pnotify.css" rel="stylesheet" />
+    <script src="~/Scripts/plugins/jquery-pnotify/jquery.pnotify.3.2.0.js"></script>
+    <!--ngDialog-->
+    <link href="~/Content/Plugins/ngDialog/ngDialog-1.0.1.min.css" rel="stylesheet" />
+    <link href="~/Content/Plugins/ngDialog/ngDialog-theme-default-1.0.1.min.css" rel="stylesheet" />
+    <script src="~/Scripts/plugins/ngDialog/ngDialog-1.0.1.min.js"></script>
+    <!--Hint-->
+    <link href="~/Content/Plugins/Hint/Hint.css" rel="stylesheet" />
+    <style>
+
+
+        .ui-pnotify {
+            margin-top: 1%;
+            left: 85%;
+        }
+
+            .ui-pnotify.custom-info .ui-pnotify-container {
+                background-color: #FFFFA2 !important;
+            }
+
+            .ui-pnotify.custom-info .ui-pnotify-title {
+                font-weight: bold;
+            }
+
+            .ui-pnotify.custom-error .ui-pnotify-container {
+                background-color: #FFABA2 !important;
+            }
+
+            .ui-pnotify.custom-error .ui-pnotify-title {
+                font-weight: bold;
+            }
+    </style>
+    <script>
+        var app = angular.module('app', ['ui.bootstrap', 'ui.sortable', 'angularUtils.directives.dirPagination', 'ngDialog']);
+
+
+        app.service('AppsettingService', function () {
+            this.BaseURL = "@WebURL";
+        });
+
+
+        // $parse 將attrs 取出的html attritube 轉為物件
+        // $parse 會 return 一個 function，之後你可以透過這個 function 的 assign
+        // fileUrl 使用駝峰命名 則使用每個大寫前加上-
+        // restrict A => attritube, C => class, E => element, M => comment (可複數綁定 ex : AE)
+        // 父子scope 交互設定 1@單向, 2=雙向,
+        // 此directive一定要放在intput type=file的html下
+        app.directive("fileUrl", ["$parse", "$http", function ($parse, $http) {
+            return {
+                restrict: "A",
+                scope: {
+                    MediaURL: '=fileUrl',//=後面為帶入的參數
+                },
+                link: function (scope, element, attrs) {
+                    element.bind("change", function () {
+                        scope.$apply(function () {
+                            var reader = new FileReader();
+                            reader.onload = function (event) {
+                                scope.MediaURL = (event.target.result);//scope 為 directive內的scope
+                                scope.$apply();
+                            };
+                            if (element[0].files.length > 0) {
+                                reader.readAsDataURL(element[0].files[0]);
+                            }
+                        });
+                    });
+                }
+            }
+        }]);
+    </script>
+</head>
+<body>
+
+    <div>
+        @Html.Action("TopNav", "Partial")
+    </div>
+
+    @RenderBody()
+
+
+    @RenderSection("scripts", required: false)
+
+    <script>
+        //  Init.LoadingStart();
+        //  Init.LoadingEnd();
+        //  Init.ShowInfoMsg();
+        //  Init.ShowErrorMsg();
+        var Init = {
+            LoadingStart: function LoadingStart() {
+                $('#loadingAjax').attr('style', 'display:inline');
+            },
+            LoadingEnd: function LoadingEnd() {
+                $('#loadingAjax').attr('style', 'display:none');
+            },
+            ShowInfoMsg: function ShowInfoMsg(msg) {
+                var notice = new PNotify({
+                    type: 'info',
+                    title: 'info',
+                    text: msg,
+                    addclass: 'custom-info',
+                    buttons: {
+                        closer: false,
+                        sticker: false
+                    }
+                });
+                notice.get().click(function () {
+                    notice.remove();
+                });
+            },
+            ShowErrorMsg: function ShowErrorMsg(ex) {
+                var notice = new PNotify({
+                    type: 'error',
+                    title: 'Error',
+                    text: ex,
+                    addclass: 'custom-error',
+                    buttons: {
+                        closer: false,
+                        sticker: false
+                    }
+                });
+                notice.get().click(function () {
+                    notice.remove();
+                });
+            },
+        }
+    </script>
+</body>
+</html>

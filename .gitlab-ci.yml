@@ -1,0 +1,21 @@
+stages:
+  - dotnet_publish
+  - dotnet_deploy
+
+dotnet_publish:
+  stage: dotnet_publish
+  script:
+    - powershell .\bat_bin\dotnet_publish.bat
+  only:
+    - develop
+  tags:
+    - win-aocc-powershell-runner
+
+dotnet_deploy:
+  stage: dotnet_deploy
+  script:
+    - powershell .\bat_bin\cp_files.bat
+  only:
+    - develop
+  tags:
+    - win-aocc-powershell-runner

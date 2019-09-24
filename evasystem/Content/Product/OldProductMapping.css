@@ -1,0 +1,68 @@
+﻿
+.pl-name-1, .pl-name-2, .pl-name-mid, .pl-name-model, .pl-rog-model-name, .pl-csc-name {
+    color: black !important;
+    display: inline-block;
+    margin-right: 15px;
+}
+
+.note-info {
+    color: rgb(179, 179, 179);
+}
+
+.modelInfo {
+    display: inline-flex;
+    margin: 10px;
+    padding: 10px;
+    background-color: #FFFFFF;
+}
+
+    .modelInfo > label {
+        padding-right: 15px;
+    }
+
+        .modelInfo > label:nth-child(1) {
+            color: #F19C99;
+        }
+
+.btn-save {
+    width: 60px !important;
+    color: #FFFFFF;
+    background-color: #d84a38;
+    border-color: #d84a38;
+    border: 0px;
+    border-radius: 0px;
+}
+
+.btn-cancel {
+    color: #d84a38;
+}
+
+.badge-tag {
+    margin-bottom: 10px;
+}
+
+.divInfoBtn {
+    margin-top: 30px;
+    margin-left: 180px;
+}
+
+#divNg > div {
+    margin-left: 35px;
+}
+
+#divNg {
+    margin-top: 2%;
+}
+
+.btn-next {
+    width: 60px !important;
+    color: #FFFFFF;
+    background-color: #d84a38;
+    border-color: #d84a38;
+    border: 0px;
+    border-radius: 0px;
+}
+
+.paddingBottom {
+    padding: 2%;
+}

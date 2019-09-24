@@ -1,0 +1,15 @@
+﻿
+@{
+    string State = ViewBag.State;
+    string ServerName = ViewBag.ServerName;
+    ViewBag.Title = "Index";
+}
+
+<h2>@State</h2>
+
+<script>
+    window.siteConfig = {
+        ServerName: '@ServerName',
+    }
+</script>
+

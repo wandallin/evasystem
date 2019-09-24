@@ -1,0 +1,29 @@
+﻿@using System.Web.Configuration;
+
+@{
+    ViewBag.Title = "Eva System";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var timeStamp = DateTime.Now.Ticks.ToString();
+    string WebURL = WebConfigurationManager.AppSettings["WebUrl"];
+}
+<link href="~/Content/Login.css?@timeStamp" rel="stylesheet" />
+<script src="~/Scripts/Login.js?@timeStamp" ></script>
+
+
+<div class="page-content-wrapper">
+    <div class="page-content displayNone" ng-controller="LoginCtrl" ng-init="Init()">
+        <div class="login-form">
+            <h2 class="text-center">登入</h2>
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="帳號" required="required" ng-model="username">
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control" placeholder="密碼" required="required" ng-model="password">
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary btn-block" ng-click="Login()">登入</button>
+            </div>
+        </div>
+    </div>
+</div>
+

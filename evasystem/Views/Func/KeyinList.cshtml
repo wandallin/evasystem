@@ -1,0 +1,48 @@
+﻿@using System.Web.Configuration;
+
+@{
+    ViewBag.Title = "Eva System";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var timeStamp = DateTime.Now.Ticks.ToString();
+    string WebURL = WebConfigurationManager.AppSettings["WebUrl"];
+}
+<link href="~/Content/KeyinList.css?@timeStamp" rel="stylesheet" />
+<script src="~/Scripts/KeyinList.js?@timeStamp"></script>
+
+
+<div class="page-content-wrapper">
+    <div class="page-content displayNone" ng-controller="KeyinListCtrl" ng-init="Init()">
+        <div class="login-form">
+            <h2 class="text-center">資詢單</h2>
+
+
+            <div class="datatable" ng-show="SelectFoods.length > 0">
+                <table class="rtable">
+                    <thead>
+                        <tr>
+                            <th>食物名稱</th>
+                            <th>卡路里</th>
+                            <th>碳水化合物</th>
+                            <th>脂肪</th>
+                            <th>蛋白質</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="SelectFood in SelectFoods track by $index">
+                            <td>{{SelectFood.FoodName}}</td>
+                            <td>{{SelectFood.Calories}}</td>
+                            <td>{{SelectFood.Carbohydrate}}</td>
+                            <td>{{SelectFood.Adipose}}</td>
+                            <td>{{SelectFood.Protein}}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="4"></td>
+                            <td>熱量:{{TotalCalor}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+

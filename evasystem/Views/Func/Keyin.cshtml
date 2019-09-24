@@ -1,0 +1,65 @@
+﻿@using System.Web.Configuration;
+
+@{
+    ViewBag.Title = "Eva System";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var timeStamp = DateTime.Now.Ticks.ToString();
+    string WebURL = WebConfigurationManager.AppSettings["WebUrl"];
+}
+<link href="~/Content/Keyin.css?@timeStamp" rel="stylesheet" />
+<script src="~/Scripts/Keyin.js?@timeStamp"></script>
+
+
+<div class="page-content-wrapper">
+    <div class="page-content displayNone" ng-controller="KeyinCtrl" ng-init="Init()">
+        <div class="login-form">
+            <h2 class="text-center">新增資詢單</h2>
+
+
+            <div class="input-group">
+
+                <input type="text" class="form-control" placeholder="諮詢日期" ng-model="SearchParam.StartDate.Value"
+                       ng-readonly="true"
+                       uib-datepicker-popup="yyyy/MM/dd"
+                       is-open="SearchParam.StartDate.ShowFlag" />
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" ng-click="ClickOpenDate(SearchParam.StartDate)"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+
+            <br />
+            <input type="text" class="form-control" placeholder="姓名" required="required" ng-model="name">
+            <br />
+            <input type="text" class="form-control" placeholder="班級" required="required" ng-model="class">
+            <br />
+            <input type="text" class="form-control" placeholder="手機" required="required" ng-model="phone">
+            <br />
+            <input type="text" class="form-control" placeholder="諮詢項目" required="required" ng-model="quest">
+            <br />
+            <select class="form-control" ng-model="type">
+                <option value=0>無效</option>
+                <option value=1>A單</option>
+                <option value=2>B單</option>
+            </select>
+            <br />
+            <select class="form-control" ng-model="transaction">
+                <option value=0>未成交</option>
+                <option value=1>成交</option>
+            </select>
+            <br />
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="成交日期" ng-model="Tran.StartDate.Value"
+                       ng-readonly="true"
+                       uib-datepicker-popup="yyyy/MM/dd"
+                       is-open="Tran.StartDate.ShowFlag" />
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" ng-click="ClickOpenDate(Tran.StartDate)"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+            <br />
+            <button type="submit" class="btn btn-primary btn-block" ng-click="Save()">儲存</button>
+
+        </div>
+    </div>
+</div>
+
