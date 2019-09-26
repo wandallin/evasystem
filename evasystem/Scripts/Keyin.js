@@ -1,5 +1,5 @@
 ﻿app.controller('KeyinCtrl', function ($scope, $http, ngDialog, AppsettingService) {
-    $scope.type = '1';
+    //$scope.type = '1';
     $scope.transaction = '0';
 
     $scope.SearchParam = {
@@ -29,11 +29,14 @@
     $scope.Save = function () {
         var keyin = {
             name: $scope.name,
-            classname: $scope.class,
+            classname: $scope.classname,
+            grade: $scope.grade,
             phone: $scope.phone,
             quest: $scope.quest,
+            money: $scope.money,
             type: $scope.type,
             status: $scope.transaction,
+            contract: $scope.contract,
             askdate: $scope.formatDate($scope.SearchParam.StartDate.Value),
             trandate: $scope.formatDate($scope.Tran.StartDate.Value),
         };

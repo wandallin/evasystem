@@ -16,6 +16,12 @@
             <h2 class="text-center">新增資詢單</h2>
 
 
+            <select class="form-control" ng-model="contract">
+                <option value="" disabled selected>聯絡狀態</option>
+                <option value="待約">待約</option>
+                <option value="已約諮詢">已約諮詢</option>
+            </select>
+            <br />
             <div class="input-group">
 
                 <input type="text" class="form-control" placeholder="諮詢日期" ng-model="SearchParam.StartDate.Value"
@@ -30,16 +36,46 @@
             <br />
             <input type="text" class="form-control" placeholder="姓名" required="required" ng-model="name">
             <br />
-            <input type="text" class="form-control" placeholder="班級" required="required" ng-model="class">
+            <select class="form-control" ng-model="classname">
+                <option value="" disabled selected>班級</option>
+                <option value="會計系">會計系</option>
+                <option value="財經系">財經系</option>
+                <option value="企管系">企管系</option>
+                <option value="產經系">產經系</option>
+                <option value="國企系">國企系</option>
+                <option value="管科系">管科系</option>
+                <option value="資管系">資管系</option>
+                <option value="風保系">風保系</option>
+                <option value="公行系">公行系</option>
+                <option value="統計系">統計系</option>
+                <option value="運管系">運管系</option>
+                <option value="全財管">全財管</option>
+                <option value="經濟系">經濟系</option>
+                <option value="在職">在職</option>
+            </select>
+            <br />
+            <select class="form-control" ng-model="grade">
+                <option value="" disabled selected>年級</option>
+                <option value="2020">2020</option>
+                <option value="2021">2021</option>
+                <option value="2022">2022</option>
+                <option value="2023">2023</option>
+                <option value="2024">2024</option>
+                <option value="2025">2025</option>
+                <option value="在職">在職</option>
+            </select>
             <br />
             <input type="text" class="form-control" placeholder="手機" required="required" ng-model="phone">
             <br />
             <input type="text" class="form-control" placeholder="諮詢項目" required="required" ng-model="quest">
             <br />
+            <input type="text" class="form-control" placeholder="金額" required="required" ng-model="money">
+            <br />
             <select class="form-control" ng-model="type">
-                <option value=0>無效</option>
-                <option value=1>A單</option>
-                <option value=2>B單</option>
+                <option value="" disabled selected>AB單</option>
+                <option value=1>無效</option>
+                <option value=2>A單</option>
+                <option value=3>B單</option>
             </select>
             <br />
             <select class="form-control" ng-model="transaction">

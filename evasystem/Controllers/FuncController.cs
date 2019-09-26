@@ -37,5 +37,16 @@ namespace evasystem.Controllers
             };
             return ExecService(myDelegate, response);
         }
+
+        [HttpPost]
+        public object GetKeyinListData()
+        {
+            ApiResponse response = new ApiResponse();
+            myDelegate = () =>
+            {
+                response.Result = oFuncService.GetKeyinListData(this.GetSession("accountid").ToString());
+            };
+            return ExecService(myDelegate, response);
+        }
     }
 }

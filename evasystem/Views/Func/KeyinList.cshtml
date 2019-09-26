@@ -12,37 +12,49 @@
 
 <div class="page-content-wrapper">
     <div class="page-content displayNone" ng-controller="KeyinListCtrl" ng-init="Init()">
-        <div class="login-form">
+
             <h2 class="text-center">資詢單</h2>
 
 
-            <div class="datatable" ng-show="SelectFoods.length > 0">
+            <div class="datatable">
                 <table class="rtable">
                     <thead>
                         <tr>
-                            <th>食物名稱</th>
-                            <th>卡路里</th>
-                            <th>碳水化合物</th>
-                            <th>脂肪</th>
-                            <th>蛋白質</th>
+                            <th>聯絡狀態</th>
+                            <th>資詢日期</th>
+                            <th>姓名</th>
+                            <th>班級</th>
+                            <th>年級</th>
+                            <th>手機</th>
+                            <th>金額</th>
+                            <th>AB單</th>
+                            <th>成交狀態</th>
+                            <th>成交日期</th>
+                            <th>編輯</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="SelectFood in SelectFoods track by $index">
-                            <td>{{SelectFood.FoodName}}</td>
-                            <td>{{SelectFood.Calories}}</td>
-                            <td>{{SelectFood.Carbohydrate}}</td>
-                            <td>{{SelectFood.Adipose}}</td>
-                            <td>{{SelectFood.Protein}}</td>
+                        <tr ng-repeat="Keyin in KeyinList track by $index">
+                            <td>{{Keyin.Contract}}</td>
+                            <td>{{Keyin.Askdate | date:'yyyy-MM-dd' }}</td>
+                            <td>{{Keyin.Name}}</td>
+                            <td>{{Keyin.Classname}}</td>
+                            <td>{{Keyin.Grade}}</td>
+                            <td>{{Keyin.Phone}}</td>
+                            <td>{{Keyin.Money}}</td>
+                            <td>{{Keyin.Type | KeyinType}}</td>
+                            <td>{{Keyin.Status | KeyinStatus}}</td>
+                            <td>{{Keyin.Trandate | date:'yyyy-MM-dd' }}</td>
+                            <td>{{Keyin.Id}}</td>
                         </tr>
                         <tr>
                             <td colspan="4"></td>
-                            <td>熱量:{{TotalCalor}}</td>
+                            <td>累計金額:{{TotalMoney}}</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
         </div>
-    </div>
+
 </div>
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using evasystem.DAL;
+using evasystem.Models.DTOs;
 using evasystem.Models.WebRequest;
 
 namespace evasystem.Service
@@ -14,6 +15,11 @@ namespace evasystem.Service
         internal bool KeyinSave(KeyinData data, string accountid)
         {
             return oFuncDAL.KeyinSave(data, accountid);
+        }
+
+        internal List<KeyinDataDTO> GetKeyinListData(string accountid)
+        {
+            return oFuncDAL.GetKeyinListData(accountid);
         }
     }
 }

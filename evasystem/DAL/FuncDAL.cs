@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using evasystem.Models.DTOs;
 using evasystem.Models.TableSchema;
 using evasystem.Models.WebRequest;
 
@@ -26,6 +27,15 @@ namespace evasystem.DAL
             };
 
             bool result = DapperInsert(insertKeyinData) > 0;
+            return result;
+        }
+
+        internal List<KeyinDataDTO> GetKeyinListData(string accountid)
+        {
+            string sql = @"
+SELECT * FROM [eva-db].[dbo].[KeyinData] where AccountId = @accountid
+";
+            var result = this.DapperQuery<KeyinDataDTO>(sql, new { accountid }).ToList();
             return result;
         }
     }

@@ -357,6 +357,7 @@
     <Compile Include="Helpers\MethodInfoHelper.cs" />
     <Compile Include="Helpers\SendCodeHelper.cs" />
     <Compile Include="Helpers\VulnerabilityHelper.cs" />
+    <Compile Include="Models\DTOs\KeyinDataDTO.cs" />
     <Compile Include="Models\Enums\EnumClass.cs" />
     <Compile Include="Models\GeneralError.cs" />
     <Compile Include="Models\TableSchema\InsertKeyinData.cs" />
@@ -398,7 +399,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\DTOs\" />
     <Folder Include="Views\Base\" />
     <Folder Include="Views\Home\" />
   </ItemGroup>
