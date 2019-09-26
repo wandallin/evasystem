@@ -20,7 +20,7 @@
 
 app.filter('KeyinType', function () {
     return function (Type) {
-        var colorArr = ['未輸入', '無效', 'A單', 'B單'];
+        var colorArr = ['未輸入', '無效', 'A單', 'B單' ,'可追追看'];
         var intStatus = parseInt(Type);
         return colorArr[intStatus];
     }

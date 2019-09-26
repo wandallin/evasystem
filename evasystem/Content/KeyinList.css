@@ -81,6 +81,7 @@
         text-transform: uppercase;
         background: #f2f0e6;
         text-align:center;
+        min-width: 100px;
     }
 
     .rtable th,
