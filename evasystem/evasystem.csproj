@@ -175,6 +175,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\KeyinEdit.css" />
     <Content Include="Content\Keyin.css" />
     <Content Include="Content\KeyinList.css" />
     <Content Include="Content\Login.css" />
@@ -294,6 +295,7 @@
     <Content Include="Content\themes\uniformjs\jeans\css\uniform.jeans.scss" />
     <Content Include="Content\themes\uniformjs\_base\css\uniform._base.scss" />
     <None Include="Properties\PublishProfiles\Pro.pubxml" />
+    <Content Include="Scripts\KeyinEdit.js" />
     <Content Include="Scripts\Keyin.js" />
     <Content Include="Scripts\KeyinList.js" />
     <Content Include="Scripts\Login.js" />
@@ -395,6 +397,7 @@
     <Content Include="Views\Func\Keyin.cshtml" />
     <Content Include="Views\Partial\Logout.cshtml" />
     <Content Include="Views\Func\KeyinList.cshtml" />
+    <Content Include="Views\Func\KeyinEdit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

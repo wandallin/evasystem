@@ -25,6 +25,13 @@ namespace evasystem.Controllers
             return View();
         }
 
+        [CheckLogin]
+        public ActionResult KeyinEdit(int KeyinId)
+        {
+            ViewBag.KeyinId = KeyinId;
+            return View();
+        }
+
         FuncService oFuncService = new FuncService();
 
         [HttpPost]
@@ -45,6 +52,17 @@ namespace evasystem.Controllers
             myDelegate = () =>
             {
                 response.Result = oFuncService.GetKeyinListData(this.GetSession("accountid").ToString());
+            };
+            return ExecService(myDelegate, response);
+        }
+
+        [HttpPost]
+        public object GetKeyinData(string KeyinId)
+        {
+            ApiResponse response = new ApiResponse();
+            myDelegate = () =>
+            {
+                response.Result = oFuncService.GetKeyinData(KeyinId, this.GetSession("accountid").ToString());
             };
             return ExecService(myDelegate, response);
         }

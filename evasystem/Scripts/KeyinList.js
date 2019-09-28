@@ -19,17 +19,23 @@
 })
 
 app.filter('KeyinType', function () {
-    return function (Type) {
+    return function (data) {
         var colorArr = ['未輸入', '無效', 'A單', 'B單' ,'可追追看'];
-        var intStatus = parseInt(Type);
+        var intStatus = parseInt(data);
         return colorArr[intStatus];
     }
 });
 
 app.filter('KeyinStatus', function () {
-    return function (Type) {
+    return function (data) {
         var colorArr = ['未成交', '成交'];
-        var intStatus = parseInt(Type);
+        var intStatus = parseInt(data);
         return colorArr[intStatus];
+    }
+});
+
+app.filter('KeyinTrandate', function () {
+    return function (data) {
+        return data == '1970-01-01T00:00:00' ? '' : data;
     }
 });

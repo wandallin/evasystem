@@ -15,15 +15,14 @@
 
         <h2 class="text-center">諮詢單</h2>
         <div class="login-form">
-            <select class="form-control" ng-model="type">
-                <option value="" disabled selected>AB單</option>
+            <select class="form-control" ng-model="search.Type">
+                <option value="" disabled selected>搜尋項目</option>
+                <option value=0>未輸入</option>
                 <option value=2>A單</option>
                 <option value=3>B單</option>
                 <option value=4>可追追看</option>
                 <option value=1>無效</option>
             </select>
-            </br>
-            <button type="button" class="btn" ng-click="Search()">搜尋</button>
         </div>
         <div class="datatable">
             <table class="rtable">
@@ -43,7 +42,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="Keyin in KeyinList track by $index">
+                    <tr ng-repeat="Keyin in KeyinList | filter:search">
                         <td>{{Keyin.Contract}}</td>
                         <td>{{Keyin.Askdate | date:'yyyy-MM-dd' }}</td>
                         <td>{{Keyin.Name}}</td>
@@ -53,9 +52,9 @@
                         <td>{{Keyin.Money}}</td>
                         <td>{{Keyin.Type | KeyinType}}</td>
                         <td>{{Keyin.Status | KeyinStatus}}</td>
-                        <td>{{Keyin.Trandate | date:'yyyy-MM-dd' }}</td>
+                        <td>{{Keyin.Trandate | KeyinTrandate | date:'yyyy-MM-dd' }}</td>
                         <td>
-                            <button type="button" class="btn" ng-click="Edit(Keyin.Id)">Edit</button>
+                            <a ng-href="{{BaseURL}}/func/KeyinEdit?KeyinId={{Keyin.Id}}" target="_blank" class="btn btn-edit">Edit</a>
                         </td>
                     </tr>
                 </tbody>

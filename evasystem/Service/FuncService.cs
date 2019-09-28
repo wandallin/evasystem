@@ -21,5 +21,10 @@ namespace evasystem.Service
         {
             return oFuncDAL.GetKeyinListData(accountid);
         }
+
+        internal object GetKeyinData(string keyinId, string accountid)
+        {
+            return oFuncDAL.GetKeyinData(keyinId, accountid);
+        }
     }
 }

@@ -23,6 +23,9 @@ namespace evasystem.DAL
                Askdate = data.askdate,
                Trandate = data.trandate,
                AccountId = Convert.ToInt32(accountid),
+               Contract = data.contract,
+               Grade = data.grade,
+               Money = data.money,
 
             };
 
@@ -36,6 +39,15 @@ namespace evasystem.DAL
 SELECT * FROM [eva-db].[dbo].[KeyinData] where AccountId = @accountid
 ";
             var result = this.DapperQuery<KeyinDataDTO>(sql, new { accountid }).ToList();
+            return result;
+        }
+
+        internal KeyinDataDTO GetKeyinData(string keyinId, string accountid)
+        {
+            string sql = @"
+SELECT * FROM [eva-db].[dbo].[KeyinData] where Id=@keyinId and AccountId = @accountid
+";
+            var result = this.DapperQueryFirstOrDefault<KeyinDataDTO>(sql, new { keyinId, accountid });
             return result;
         }
     }
