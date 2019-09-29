@@ -12,14 +12,12 @@
             username: $scope.username,
             password: $scope.password
         };
-        console.log(postData)
         Init.LoadingStart();
         $http({
             url: AppsettingService.BaseURL + '/Home/Login',
             data: postData,
             method: "POST",
         }).success(function (res) {
-            console.log(res)
             if (res == "True") {
                 window.location = AppsettingService.BaseURL + "/func/Keyin";
             }

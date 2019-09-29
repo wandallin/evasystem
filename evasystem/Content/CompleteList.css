@@ -25,10 +25,9 @@
     font-weight: bold;
 }
 
-.edit-btn {
-    width: 140px;
-    margin-left: 10px;
-    margin-right: 10px;
+
+.datatable {
+    display: flex;
 }
 
 
@@ -81,6 +80,8 @@
         text-align: left;
         text-transform: uppercase;
         background: #f2f0e6;
+        text-align:center;
+        min-width: 100px;
     }
 
     .rtable th,

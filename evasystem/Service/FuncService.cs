@@ -26,5 +26,15 @@ namespace evasystem.Service
         {
             return oFuncDAL.GetKeyinData(keyinId, accountid);
         }
+
+        internal object KeyinEditSave(KeyinUpdateData data, string accountid)
+        {
+            return oFuncDAL.KeyinEditSave(data, accountid);
+        }
+
+        internal object GetCompleteListData(string accountid)
+        {
+            return oFuncDAL.GetCompleteListData(accountid);
+        }
     }
 }

@@ -1,0 +1,72 @@
+﻿@using System.Web.Configuration;
+
+@{
+    ViewBag.Title = "Eva System";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var timeStamp = DateTime.Now.Ticks.ToString();
+    string WebURL = WebConfigurationManager.AppSettings["WebUrl"];
+}
+<link href="~/Content/CompleteList.css?@timeStamp" rel="stylesheet" />
+<script src="~/Scripts/CompleteList.js?@timeStamp"></script>
+
+
+<div class="page-content-wrapper">
+    <div class="page-content displayNone" ng-controller="CompleteListCtrl" ng-init="Init()">
+
+        <h2 class="text-center">諮詢單</h2>
+        <div class="login-form">
+            <select class="form-control" ng-model="search.Classname">
+                <option value="" selected>班級</option>
+                <option value="財金系">財金系</option>
+                <option value="經濟系">經濟系</option>
+                <option value="統計系">統計系</option>
+                <option value="企管系">企管系</option>
+                <option value="產經系">產經系</option>
+                <option value="國企系">國企系</option>
+                <option value="管科系">管科系</option>
+                <option value="資管系">資管系</option>
+                <option value="風保系">風保系</option>
+                <option value="運管系">運管系</option>
+                <option value="公行系">公行系</option>
+                <option value="會計系">會計系</option>
+                <option value="全財管">全財管</option>
+                <option value="在職">在職</option>
+            </select>
+            <br />
+            <select class="form-control" ng-model="search.Grade">
+                <option value="" selected>年級</option>
+                <option value="2020">2020</option>
+                <option value="2021">2021</option>
+                <option value="2022">2022</option>
+                <option value="2023">2023</option>
+                <option value="2024">2024</option>
+                <option value="2025">2025</option>
+                <option value="在職">在職</option>
+            </select>
+        </div>
+        <div class="datatable">
+            <table class="rtable">
+                <thead>
+                    <tr>
+                        <th>姓名</th>
+                        <th>班級</th>
+                        <th>年級</th>
+                        <th>金額</th>
+                        <th>成交日期</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="Keyin in KeyinList | filter:search | orderBy:'-Trandate'">
+                        <td>{{Keyin.Name}}</td>
+                        <td>{{Keyin.Classname}}</td>
+                        <td>{{Keyin.Grade}}</td>
+                        <td>{{Keyin.Money}}</td>
+                        <td>{{Keyin.Trandate | KeyinTrandate | date:'yyyy-MM-dd' }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+

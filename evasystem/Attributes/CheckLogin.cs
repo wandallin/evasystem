@@ -12,7 +12,7 @@ namespace evasystem.Attributes
         {
             if ((this.GetSession("accountid") == null))
             {
-                actionContext.Result = new RedirectResult("http://35.189.188.177/");
+                actionContext.Result = new RedirectResult("http://35.206.234.99/");
             }
         }
         public object GetSession(string key)

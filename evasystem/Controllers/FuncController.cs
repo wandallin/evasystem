@@ -32,6 +32,12 @@ namespace evasystem.Controllers
             return View();
         }
 
+        [CheckLogin]
+        public ActionResult CompleteList()
+        {
+            return View();
+        }
+
         FuncService oFuncService = new FuncService();
 
         [HttpPost]
@@ -63,6 +69,28 @@ namespace evasystem.Controllers
             myDelegate = () =>
             {
                 response.Result = oFuncService.GetKeyinData(KeyinId, this.GetSession("accountid").ToString());
+            };
+            return ExecService(myDelegate, response);
+        }
+
+        [HttpPost]
+        public object KeyinEditSave(KeyinUpdateData data)
+        {
+            ApiResponse response = new ApiResponse();
+            myDelegate = () =>
+            {
+                response.Result = oFuncService.KeyinEditSave(data, this.GetSession("accountid").ToString());
+            };
+            return ExecService(myDelegate, response);
+        }
+
+        [HttpPost]
+        public object GetCompleteListData()
+        {
+            ApiResponse response = new ApiResponse();
+            myDelegate = () =>
+            {
+                response.Result = oFuncService.GetCompleteListData(this.GetSession("accountid").ToString());
             };
             return ExecService(myDelegate, response);
         }

@@ -16,7 +16,7 @@
         <h2 class="text-center">諮詢單</h2>
         <div class="login-form">
             <select class="form-control" ng-model="search.Type">
-                <option value="" disabled selected>搜尋項目</option>
+                <option value="" selected>搜尋項目</option>
                 <option value=0>未輸入</option>
                 <option value=2>A單</option>
                 <option value=3>B單</option>
@@ -54,7 +54,7 @@
                         <td>{{Keyin.Status | KeyinStatus}}</td>
                         <td>{{Keyin.Trandate | KeyinTrandate | date:'yyyy-MM-dd' }}</td>
                         <td>
-                            <a ng-href="{{BaseURL}}/func/KeyinEdit?KeyinId={{Keyin.Id}}" target="_blank" class="btn btn-edit">Edit</a>
+                            <a ng-href="{{BaseURL}}/func/KeyinEdit?KeyinId={{Keyin.Id}}" target="_self" class="btn btn-edit">Edit</a>
                         </td>
                     </tr>
                 </tbody>

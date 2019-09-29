@@ -33,6 +33,38 @@ namespace evasystem.DAL
             return result;
         }
 
+        internal object GetCompleteListData(string accountid)
+        {
+            string sql = @"
+SELECT * FROM [eva-db].[dbo].[KeyinData] where AccountId = @accountid and Status=1
+";
+            var result = this.DapperQuery<KeyinDataDTO>(sql, new { accountid }).ToList();
+            return result;
+        }
+
+        internal object KeyinEditSave(KeyinUpdateData data, string accountid)
+        {
+            UpdateKeyinData insertKeyinData = new UpdateKeyinData()
+            {
+                Id = data.id,
+                Name = data.name,
+                Classname = data.classname,
+                Phone = data.phone,
+                Quest = data.quest,
+                Type = data.type,
+                Status = data.status,
+                Askdate = data.askdate,
+                Trandate = data.trandate,
+                AccountId = Convert.ToInt32(accountid),
+                Contract = data.contract,
+                Grade = data.grade,
+                Money = data.money,
+            };
+
+            bool result = DapperUpdate(insertKeyinData);
+            return result;
+        }
+
         internal List<KeyinDataDTO> GetKeyinListData(string accountid)
         {
             string sql = @"

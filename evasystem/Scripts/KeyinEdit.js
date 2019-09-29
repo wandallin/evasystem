@@ -45,7 +45,8 @@
                 $scope.result = res.Result;
                 $scope.Type = String(res.Result.Type);
                 $scope.Status = String(res.Result.Status);
-               
+                $scope.SearchParam.StartDate.Value = res.Result.Askdate == '1970-01-01T00:00:00' ? '' : res.Result.Askdate ;
+                $scope.Tran.StartDate.Value = res.Result.Trandate == '1970-01-01T00:00:00' ? '' : res.Result.Trandate ;
                
             }
             Init.LoadingEnd();
@@ -59,17 +60,22 @@
         console.log($scope.Status)
     }
 
+    $scope.Cancel = function () {
+        window.location.href = "/func/KeyinList";
+    }
+
     $scope.Save = function () {
         var keyin = {
-            name: $scope.name,
-            classname: $scope.classname,
-            grade: $scope.grade,
-            phone: $scope.phone,
-            quest: $scope.quest,
-            money: $scope.money,
-            type: $scope.type,
-            status: $scope.transaction,
-            contract: $scope.contract,
+            id: $scope.KeyinId,
+            name: $scope.result.Name,
+            classname: $scope.result.Classname,
+            grade: $scope.result.Grade,
+            phone: $scope.result.Phone,
+            quest: $scope.result.Quest,
+            money: $scope.result.Money,
+            type: $scope.Type,
+            status: $scope.Status,
+            contract: $scope.result.Contract,
             askdate: $scope.formatDate($scope.SearchParam.StartDate.Value),
             trandate: $scope.formatDate($scope.Tran.StartDate.Value),
         };
@@ -80,14 +86,16 @@
 
         Init.LoadingStart();
         $http({
-            url: AppsettingService.BaseURL + '/Func/KeyinSave',
+            url: AppsettingService.BaseURL + '/Func/KeyinEditSave',
             data: postData,
             method: "POST",
         }).success(function (res) {
             console.log(res.Result)
             if (res.Result) {
                 Init.ShowInfoMsg("Success");
-                $scope.resetData();
+                window.location.href = "/func/KeyinList";
+            } else {
+                Init.ShowInfoMsg("Error");
             }
             Init.LoadingEnd();
         }).error(function () {
