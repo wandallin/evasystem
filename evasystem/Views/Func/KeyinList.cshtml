@@ -44,7 +44,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="Keyin in KeyinList | filter:search">
+                    <tr ng-repeat="Keyin in KeyinList | filter:search | orderBy:'-Askdate'">
                         <td>
                             <a ng-href="{{BaseURL}}/func/KeyinEdit?KeyinId={{Keyin.Id}}" target="_self" class="btn btn-edit">Edit</a>
                         </td>
