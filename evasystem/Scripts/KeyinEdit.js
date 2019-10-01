@@ -45,8 +45,8 @@
                 $scope.result = res.Result;
                 $scope.Type = String(res.Result.Type);
                 $scope.Status = String(res.Result.Status);
-                $scope.SearchParam.StartDate.Value = res.Result.Askdate == '1970-01-01T00:00:00' ? '' : res.Result.Askdate ;
-                $scope.Tran.StartDate.Value = res.Result.Trandate == '1970-01-01T00:00:00' ? '' : res.Result.Trandate ;
+                $scope.SearchParam.StartDate.Value = res.Result.Askdate == '1970-01-01T00:00:00' ? null : res.Result.Askdate ;
+                $scope.Tran.StartDate.Value = res.Result.Trandate == '1970-01-01T00:00:00' ? null : res.Result.Trandate ;
                
             }
             Init.LoadingEnd();
@@ -73,7 +73,7 @@
             phone: $scope.result.Phone,
             quest: $scope.result.Quest,
             money: $scope.result.Money,
-            type: $scope.Type,
+            keyintype: $scope.Type,
             status: $scope.Status,
             contract: $scope.result.Contract,
             askdate: $scope.formatDate($scope.SearchParam.StartDate.Value),

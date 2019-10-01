@@ -36,5 +36,10 @@ namespace evasystem.Service
         {
             return oFuncDAL.GetCompleteListData(accountid);
         }
+
+        internal object DeleteKeyinData(string keyinId, string accountid)
+        {
+            return oFuncDAL.DeleteKeyinData(keyinId, accountid);
+        }
     }
 }

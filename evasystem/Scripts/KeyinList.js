@@ -16,6 +16,29 @@
             Init.LoadingEnd();
         });
     }
+
+    $scope.delete = function (keyinId) {
+        var checkDelete = confirm('確定刪除');
+
+        if (checkDelete) {
+            var postData = {
+                KeyinId: keyinId
+            }
+            $http({
+                url: AppsettingService.BaseURL + '/Func/DeleteKeyinData',
+                data: postData,
+                method: "POST",
+            }).success(function (res) {
+                Init.LoadingStart();
+                Init.ShowInfoMsg("Success");
+                $scope.GetKeyinListData();
+                Init.LoadingEnd();
+            }).error(function () {
+                Init.ShowErrorMsg("server error");
+                Init.LoadingEnd();
+            });
+        }
+    }
 })
 
 app.filter('KeyinType', function () {

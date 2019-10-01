@@ -42,6 +42,18 @@ SELECT * FROM [eva-db].[dbo].[KeyinData] where AccountId = @accountid and Status
             return result;
         }
 
+        internal object DeleteKeyinData(string keyinId, string accountid)
+        {
+            DeleteKeyinData deleteKeyinData = new DeleteKeyinData()
+            {
+                Id = Convert.ToInt32(keyinId),
+                AccountId = Convert.ToInt32(accountid),
+            };
+
+            bool result = DapperDelete(deleteKeyinData);
+            return result;
+        }
+
         internal object KeyinEditSave(KeyinUpdateData data, string accountid)
         {
             UpdateKeyinData insertKeyinData = new UpdateKeyinData()
@@ -51,7 +63,7 @@ SELECT * FROM [eva-db].[dbo].[KeyinData] where AccountId = @accountid and Status
                 Classname = data.classname,
                 Phone = data.phone,
                 Quest = data.quest,
-                Type = data.type,
+                Type = data.keyintype,
                 Status = data.status,
                 Askdate = data.askdate,
                 Trandate = data.trandate,

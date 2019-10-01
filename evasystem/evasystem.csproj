@@ -370,6 +370,7 @@
     <Compile Include="Models\Enums\EnumClass.cs" />
     <Compile Include="Models\GeneralError.cs" />
     <Compile Include="Models\TableSchema\InsertKeyinData.cs" />
+    <Compile Include="Models\TableSchema\DeleteKeyinData.cs" />
     <Compile Include="Models\TableSchema\UpdateKeyinData.cs" />
     <Compile Include="Models\ViewModels\Account\UserInfoViewModel.cs" />
     <Compile Include="Models\ViewModels\ApiResponse.cs" />

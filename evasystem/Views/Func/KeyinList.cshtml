@@ -28,8 +28,10 @@
             <table class="rtable">
                 <thead>
                     <tr>
+                        
+                        <th>編輯</th>
                         <th>聯絡狀態</th>
-                        <th>資詢日期</th>
+                        <th>諮詢日期</th>
                         <th>姓名</th>
                         <th>班級</th>
                         <th>年級</th>
@@ -38,11 +40,14 @@
                         <th>AB單</th>
                         <th>成交狀態</th>
                         <th>成交日期</th>
-                        <th>編輯</th>
+                        <th>刪除</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr ng-repeat="Keyin in KeyinList | filter:search">
+                        <td>
+                            <a ng-href="{{BaseURL}}/func/KeyinEdit?KeyinId={{Keyin.Id}}" target="_self" class="btn btn-edit">Edit</a>
+                        </td>
                         <td>{{Keyin.Contract}}</td>
                         <td>{{Keyin.Askdate | date:'yyyy-MM-dd' }}</td>
                         <td>{{Keyin.Name}}</td>
@@ -53,8 +58,9 @@
                         <td>{{Keyin.Type | KeyinType}}</td>
                         <td>{{Keyin.Status | KeyinStatus}}</td>
                         <td>{{Keyin.Trandate | KeyinTrandate | date:'yyyy-MM-dd' }}</td>
+
                         <td>
-                            <a ng-href="{{BaseURL}}/func/KeyinEdit?KeyinId={{Keyin.Id}}" target="_self" class="btn btn-edit">Edit</a>
+                            <a ng-click="delete(Keyin.Id)" target="_self" class="btn btn-edit">刪除</a>
                         </td>
                     </tr>
                 </tbody>

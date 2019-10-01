@@ -94,5 +94,17 @@ namespace evasystem.Controllers
             };
             return ExecService(myDelegate, response);
         }
+
+        [HttpPost]
+        public object DeleteKeyinData(string KeyinId)
+        {
+            ApiResponse response = new ApiResponse();
+            myDelegate = () =>
+            {
+                response.Result = oFuncService.DeleteKeyinData(KeyinId, this.GetSession("accountid").ToString());
+            };
+            return ExecService(myDelegate, response);
+        }
+        
     }
 }

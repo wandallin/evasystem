@@ -15,7 +15,7 @@ namespace evasystem.Models.WebRequest
         public string quest { get; set; }
         public int money { get; set; }
         public string contract { get; set; }
-        public int type { get; set; }
+        public int keyintype { get; set; }
         public int status { get; set; }
         public DateTime askdate { get; set; }
         public DateTime trandate { get; set; }
