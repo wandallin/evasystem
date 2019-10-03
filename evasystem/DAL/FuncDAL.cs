@@ -80,7 +80,7 @@ SELECT * FROM [eva-db].[dbo].[KeyinData] where AccountId = @accountid and Status
         internal List<KeyinDataDTO> GetKeyinListData(string accountid)
         {
             string sql = @"
-SELECT * FROM [eva-db].[dbo].[KeyinData] where AccountId = @accountid
+SELECT * FROM [eva-db].[dbo].[KeyinData] where AccountId = @accountid and Status != 1
 ";
             var result = this.DapperQuery<KeyinDataDTO>(sql, new { accountid }).ToList();
             return result;
